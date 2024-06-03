@@ -17,16 +17,16 @@ In this project, we utilize the dataset from a previous study [1], which employe
 | v                     | v                        | v                        | x                  | 16       |     0                   |   0      |  0       |     0      |     0           |  1          |
 | v                     | v                        | v                        | v                  | 16       |     0                   |   0      |  0       |     0      |     0           |  1          |
 
-## Row1 ICLabel
+## Row1 ICLabel (Used in 0000, red ones, possbility > 0.5, are removerd )
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/55d9f7e8-787c-4990-b539-fda95e0f466a" width="1000">
 
-## Row2 ICLabel
+## Row2 ICLabel (Not used)
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/328672e5-27d4-487c-9d0b-2f626b8081cf" height="300">
 
-## Row3 ICLabel
+## Row3 ICLabel (Used in 1110, component 8 is removed)
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/e788866f-72f4-48c5-be98-27e2c0258124" height="300">
 
-## Row4 ICLabel
+## Row4 ICLabel (Used in 1150, component 14 is removed)
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/ab2fcd22-56fc-44f7-b3ae-bc64059baed9" height="300">
 
 # Introduction
