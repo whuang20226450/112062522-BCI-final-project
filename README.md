@@ -1,20 +1,61 @@
 # TODO
-demo video / survey
+demo video / 
 
 # Data description
-Describe the experimental design/paradigm, procedure for 
-collecting data, hardware and software used, data size, number of 
-channels, sampling rate, the website from which your data was collected, 
-owner, source, etc.
 
-In this project, we utilize the dataset presented by
-a previous study [1], where an RSVP (Rapid Serial Visual Presentation) paradigm was
-used to show 16,740 images to subjects, recording their EEG signals via a 64-channel
-EASYCAP system at 1,000 Hz. The dataset consists of around 80,000 samples in total
-from each of the 10 subjects, with the task being to classify the EEG signals of the
-subjects to one of 27 high-level classes regarding which images he were viewing. For this
-project, data from the first subject will be used, and the classes are merged to 14
-simplify the task.
+In this project, we utilize the dataset from a previous study [1], which employed a Rapid Serial Visual Presentation (RSVP) paradigm to present 16,740 images to subjects while recording their EEG signals using a 64-channel EASYCAP system at 1,000 Hz. The dataset comprises approximately 80,000 samples per subject from 10 subjects in total. The task involves classifying the subjects' EEG signals into one of 27 high-level classes based on the images they were viewing. For this project, we will focus on data from the first subject, and the classes will be consolidated into 14 to simplify the task. The source of the dataset is linked in the `Data preparation` section.
+
+**Quality evaluation**
+
+## ICA ##
+
+|  Pre-processing       |                          |                          |                    |          | Demographic Attribute   |          |          |            |                 |             |
+|:---------------------:|:------------------------:|:------------------------:|:------------------:|:--------:|:-----------------------:|:--------:|:--------:|:----------:|:---------------:|:-----------:|
+|  EEG (63 Channels)    | Channel selection        | Bandpass filter (1-50Hz) | ASR                | Brain    | Muscle                  | Eye      | Heart    | Line Noise | Channel Noise   | Other       |
+| v                     | x                        | x                        | x                  | 32       |  3                      |  1       |  0       |     0      |     6           |  21         |
+| v                     | v                        | x                        | x                  | 15       |     0                   |   0      |  1       |     0      |     0           |  1          |
+| v                     | v                        | v                        | x                  | 16       |     0                   |   0      |  0       |     0      |     0           |  1          |
+| v                     | v                        | v                        | v                  | 16       |     0                   |   0      |  0       |     0      |     0           |  1          |
+
+## Row1 ICLabel
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/55d9f7e8-787c-4990-b539-fda95e0f466a" width="1000">
+
+## Row2 ICLabel
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/328672e5-27d4-487c-9d0b-2f626b8081cf" height="300">
+
+## Row3 ICLabel
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/e788866f-72f4-48c5-be98-27e2c0258124" height="300">
+
+## Row4 ICLabel
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/ab2fcd22-56fc-44f7-b3ae-bc64059baed9" height="300">
+
+# Introduction
+EEG data is challenging due to its low signal-to-noise ratio (SNR), making meticulous preprocessing essential to enhance signal quality by reducing noise. Effective preprocessing ensures that machine learning algorithms can derive accurate insights from EEG data, making sophisticated methods crucial for maximizing the potential of EEG-based brain-computer interfaces (BCIs).
+
+This project aims to evaluate the effectiveness of different artifact removal methods. Utilizing an RSVP EEG visual dataset, we tested various methods such as ASR, ICA, and Autoreject. The results are evaluated based on the performance of EEGNet, with the evaluation metric being the macro F1 score.
+
+# Model Framework
+Model Framework (5 marks) : Outline the architecture and 
+components of your BCI system. This includes the input/output 
+mechanisms, signal preprocessing techniques, data segmentation 
+methods, artifact removal strategies, feature extraction approaches, 
+machine learning models utilized, and any other relevant components.
+
+## Preprocessing steps
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/bff14a68-fd8c-4458-acab-97d12cb0eb97" height="300">
+
+As illustrated in the image, the process starts by selecting 17 channels overlying the occipital and parietal cortex, similar to the method used in study [1]. Then, a bandpass filter is applied to retain signals within the 1-50 Hz range. After filtering, one of the artifact removal methods is chosen, although it is important to note that the ICU-net is not yet implemented and that ICA refers to the extended Infomax ICA. The signal is then epoched from -0.2s to 0.8s relative to the stimulus onset, followed by baseline correction by subtracting the mean from -0.2s to 0s. Finally, the mean ERP is calculated for epochs sharing the same label, which helps to minimize noise.
+
+## Model
+We utilize EEGNet [2], a compact CNN specifically designed for efficient EEG classification. Its primary advantage lies in its versatility, handling various EEG-based tasks such as motor imagery, ERP classification, and abnormal EEG detection. The lightweight architecture of EEGNet makes it ideal for real-time applications and deployment on devices with limited computational resources. Furthermore, its robustness against noise making it an excellent candidate for our investigation into the necessity of data preprocessing for deep learning methods.
+
+
+# Validation
+To assess the effectiveness of the methods introduced in the lecture, we designed two experiments. In the first experiment, we evaluated steps 1, 2, and 4 using an ablation approach. The second experiment tested the best combination from the first experiment alongside one of four artifact removal methods. The results of these experiments are detailed in the `Results` section and the experiments are evaluated on an independent test set after model tuning to ensure reliability.
+
+# Usage 
+
+**Environment**
 
 **Data preparation**
 1. Download the `Raw EEG data` of sub1 from [here](https://osf.io/3jk45/) and Unzip it.
@@ -43,58 +84,57 @@ simplify the task.
     * 1130
     * 1150
 
-**Quality evaluation**
-1. survey
-2. ICA
-For `0000.set`
+**Run**
 
-|  Pre-processing       |                          |                          |                    |          | Demographic Attribute   |          |          |            |                 |             |
-|:---------------------:|:------------------------:|:------------------------:|:------------------:|:--------:|:-----------------------:|:--------:|:--------:|:----------:|:---------------:|:-----------:|
-|  EEG (63 Channels)    | Channel selection        | Bandpass filter (1-50Hz) | ASR                | Brain    | Muscle                  | Eye      | Heart    | Line Noise | Channel Noise   | Other       |
-| v                     | x                        | x                        | x                  |          |                         |          |          |            |                 |             |
-| v                     | v                        | x                        | x                  |          |                         |          |          |            |                 |             |
-| v                     | v                        | v                        | x                  |          |                         |          |          |            |                 |             |
-| v                     | v                        | v                        | v                  |          |                         |          |          |            |                 |             |
+To reproduce experiment1, excute `python exp1.py` and then `python test_exp1.py`.
 
-## Row1 ICLabel
-<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/55d9f7e8-787c-4990-b539-fda95e0f466a" width="1000">
+To reproduce experiment2, excute `python exp2.py` and then `python test_exp2.py`.
 
-## Row2 ICLabel
-<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/328672e5-27d4-487c-9d0b-2f626b8081cf" height="300">
+In the `experiments` folder, each subfolder contains the training results for specific dataset. For a summary of the performance, you can refer to the `results.txt`.
 
-## Row3 ICLabel
-<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/e788866f-72f4-48c5-be98-27e2c0258124" height="300">
-
-## Row4 ICLabel
-<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/ab2fcd22-56fc-44f7-b3ae-bc64059baed9" height="300">
-
-# Introduction
-EEG data is challenging due to its low signal-to-noise ratio (SNR), making meticulous preprocessing essential to enhance signal quality by reducing noise. Effective preprocessing ensures that machine learning algorithms can derive accurate insights from EEG data, making sophisticated methods crucial for maximizing the potential of EEG-based brain-computer interfaces (BCIs).
-
-This project aims to evaluate the effectiveness of different artifact removal methods. Utilizing an RSVP EEG visual dataset, we tested various methods such as ASR, ICA, and Autoreject. The results are evaluated based on the performance of EEGNet, with the evaluation metric being the macro F1 score.
-
-# Model Framework
-Model Framework (5 marks) : Outline the architecture and 
-components of your BCI system. This includes the input/output 
-mechanisms, signal preprocessing techniques, data segmentation 
-methods, artifact removal strategies, feature extraction approaches, 
-machine learning models utilized, and any other relevant components.
-![Snipaste_2024-05-10_11-52-41](https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/bff14a68-fd8c-4458-acab-97d12cb0eb97)
-
-# Validation
-Validation (3 marks) : Describe the methods used to validate the 
-effectiveness and reliability of your BCI system.
-
-# Usage (2 marks) : Describe the usage of their BCI model's code. 
-Explain the required environment and dependencies needed to run 
-the code. Describe any configurable options or parameters within the 
-code. Provide instructions on how to execute the code.
-
-# Results (9 marks): Present a detailed comparison and analysis of 
+# Results
 your BCI system's performance against the competing methods. 
 Include metrics such as accuracy, precision, recall, F1-score, or any 
 other relevant evaluation metrics. Compare and contrast your BCI 
 system with existing competing methods. Highlight the advantages 
 and unique aspects of your system
 
+## Experiment 1
+| Dataset ID | Test Accuracy | Test Macro F1 | Test Micro F1 |
+|------------|---------------|---------------|---------------|
+| 0000       | 0.1176        | 0.0860        | 0.1176        |
+| 1100       | 0.1224        | 0.0887        | 0.1224        |
+| 1001       | **0.3471**    | 0.2775        | **0.3471**    |
+| 0101       | 0.2703        | 0.2543        | 0.2703        |
+| 1101       | 0.3137        | **0.2782**    | 0.3137        |
+
+## Experiment 2
+| Dataset ID | Test Accuracy | Test Macro F1 | Test Micro F1 |
+|------------|---------------|---------------|---------------|
+| 1111       | 0.3200        | 0.2982        | 0.3200        |
+| 1121       | 0.3484        | **0.3257**    | 0.3484        |
+| 1131       | **0.4197**    | 0.3102        | **0.4197**    |
+| 1151       | 0.2906        | 0.2689        | 0.2906        |
+
+## Plot
+
+### Dataset ID 1111
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/f2009dd2-586c-4cd2-8087-cf0e1cc94a98" height="300">
+
+### Dataset ID 1121
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/ac9c79e1-c9ab-40a3-9bed-fae484732639" height="300">
+
+### Dataset ID 1131
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/f6604bd5-5592-499c-a519-39105eb26cef" height="300">
+
+### Dataset ID 1151
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/29062230-4afb-4d83-870c-a5f1f9136f1f" height="300">
+
+## Observation
+
+
+
+
 # Reference
+[1] A large and rich EEG dataset for modeling human visual object recognition
+[2] EEGNet
