@@ -66,8 +66,9 @@ For `0000.set`
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/ab2fcd22-56fc-44f7-b3ae-bc64059baed9" height="300">
 
 # Introduction
-Introduction (2 marks) : Provide an overview of your BCI system, 
-dataset, explaining its purpose, functionality, and key features.
+EEG data is challenging due to its low signal-to-noise ratio (SNR), making meticulous preprocessing essential to enhance signal quality by reducing noise. Effective preprocessing ensures that machine learning algorithms can derive accurate insights from EEG data, making sophisticated methods crucial for maximizing the potential of EEG-based brain-computer interfaces (BCIs).
+
+This project aims to evaluate the effectiveness of different artifact removal methods. Utilizing an RSVP EEG visual dataset, we tested various methods such as ASR, ICA, and Autoreject. The results are evaluated based on the performance of EEGNet, with the evaluation metric being the macro F1 score.
 
 # Model Framework
 Model Framework (5 marks) : Outline the architecture and 
