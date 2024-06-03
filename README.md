@@ -59,6 +59,9 @@ For `0000.set`
 ## Row1 ICLabel
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/55d9f7e8-787c-4990-b539-fda95e0f466a" width="1000">
 
+## Row2 ICLabel
+<img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/328672e5-27d4-487c-9d0b-2f626b8081cf" height="300">
+
 ## Row3 ICLabel
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/e788866f-72f4-48c5-be98-27e2c0258124" height="300">
 
