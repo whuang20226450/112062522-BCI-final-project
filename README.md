@@ -30,7 +30,7 @@ In this project, we utilize the dataset from a previous study [1], which employe
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/ab2fcd22-56fc-44f7-b3ae-bc64059baed9" height="300">
 
 # Introduction
-EEG data presents challenges due to its low signal-to-noise ratio (SNR). Effective preprocessing is essential for models to accurately interpret EEG data, making artifact removal methods critical for EEG-based EEG-based BCI.
+EEG data presents challenges due to its low signal-to-noise ratio (SNR). Effective preprocessing is essential for models to accurately interpret EEG data, making artifact removal methods critical for EEG-based BCI.
 
 This project aims to evaluate the effectiveness of different artifact removal methods. Utilizing an RSVP EEG visual dataset, we tested various methods such as ASR, ICA, and Autoreject. The results are evaluated based on the performance of EEGNet, with the evaluation metric being the macro F1 score.
 
