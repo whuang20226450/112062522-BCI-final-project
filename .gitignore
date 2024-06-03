@@ -1,0 +1,7 @@
+/experiments
+/data/MnistEEG
+*.set
+*.fdt
+*.pt
+*.mat
+*.npy

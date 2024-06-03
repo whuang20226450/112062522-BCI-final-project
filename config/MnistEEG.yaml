@@ -1,0 +1,42 @@
+name: MnistEEG_test_lr_1e-07
+workspace_root_path: ./experiments
+device: cuda
+model: EEGNetModel
+net:
+  type: EEGNet_Model
+loss:
+  type: cross_entropy
+  weight: None
+dataset:
+  name: MnistEEG
+  dataset_id: '0000'
+  preprocess: true
+  num_trials: 10
+dataloader:
+  type: normal_loader
+weight:
+  path: C:/Users/112062522/Downloads/112062522_whuang/research/GNN/project2_2/weights/
+train_setting:
+  training: true
+  max_epoch: 50
+  batch_size: 200
+  num_workers: 8
+  num_classes: 10
+  num_subjects: 1
+  num_samples: 256
+  num_channels: 14
+  init_lr: 1e-07
+  max_lr: 1e-3
+  warmup_epoch: 0
+  weight_decay: 1e-3
+  save_weight_period: 500 # by self.steps
+  sub_id: 1
+backbone:
+  kernel_length1: 64    # 0.5s for 100 hz: 50
+  kernel_length2: 32    # 1/4s for 100 hz: 25
+  pooling_size1: 4    # 
+  pooling_size2: 8    # 
+  dropout: 0.
+  D: 2
+  F1: 8
+  F2: -1

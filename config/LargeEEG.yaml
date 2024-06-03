@@ -1,0 +1,57 @@
+name: exp2_LargeEEG_datasetId_1131
+workspace_root_path: ./experiments
+device: cuda
+model: EEGNetModel
+weight_path: experiments/exp1_LargeEEG_datasetId_1101/weights/model_best_macrof1.pt
+net:
+  type: EEGNet_Model
+loss:
+  type: cross_entropy
+  weight:
+  - 0.03144626146573788
+  - 0.7289030228129304
+  - 0.17383651662589272
+  - 0.07186689105876506
+  - 0.30174675726634875
+  - 0.6855159731591628
+  - 0.2926726736488723
+  - 1.0
+  - 0.8847632214303423
+  - 0.6506591842321381
+  - 0.21307434901314776
+  - 0.7746639445885009
+  - 0.7915234990292684
+  - 0.0819594563001381
+dataset:
+  name: LargeEEG
+  dataset_id: '1131'
+  preprocess: true
+  num_trials: 10
+dataloader:
+  type: normal_loader
+weight:
+  path: C:/Users/112062522/Downloads/112062522_whuang/research/GNN/project2_2/weights/
+train_setting:
+  training: true
+  max_epoch: 100
+  batch_size: 200
+  num_workers: 12
+  num_classes: 14
+  num_subjects: 1
+  num_samples: 129
+  num_channels: 17
+  init_lr: 5e-04
+  max_lr: 1e-3
+  warmup_epoch: 0
+  weight_decay: 1e-4
+  save_weight_period: 500 # by self.steps
+  sub_id: 1
+backbone:
+  kernel_length1: 64    # 0.5s for 100 hz: 50
+  kernel_length2: 32    # 1/4s for 100 hz: 25
+  pooling_size1: 4    # 
+  pooling_size2: 8    # 
+  dropout: 0.5
+  D: 2
+  F1: 8
+  F2: -1
