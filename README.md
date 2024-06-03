@@ -30,25 +30,19 @@ In this project, we utilize the dataset from a previous study [1], which employe
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/ab2fcd22-56fc-44f7-b3ae-bc64059baed9" height="300">
 
 # Introduction
-EEG data is challenging due to its low signal-to-noise ratio (SNR), making meticulous preprocessing essential to enhance signal quality by reducing noise. Effective preprocessing ensures that machine learning algorithms can derive accurate insights from EEG data, making sophisticated methods crucial for maximizing the potential of EEG-based brain-computer interfaces (BCIs).
+EEG data presents challenges due to its low signal-to-noise ratio (SNR). Effective preprocessing is essential for models to accurately interpret EEG data, making artifact removal methods critical for EEG-based EEG-based BCI.
 
 This project aims to evaluate the effectiveness of different artifact removal methods. Utilizing an RSVP EEG visual dataset, we tested various methods such as ASR, ICA, and Autoreject. The results are evaluated based on the performance of EEGNet, with the evaluation metric being the macro F1 score.
 
 # Model Framework
-Model Framework (5 marks) : Outline the architecture and 
-components of your BCI system. This includes the input/output 
-mechanisms, signal preprocessing techniques, data segmentation 
-methods, artifact removal strategies, feature extraction approaches, 
-machine learning models utilized, and any other relevant components.
 
 ## Preprocessing steps
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/bff14a68-fd8c-4458-acab-97d12cb0eb97" height="300">
 
-As illustrated in the image, the process starts by selecting 17 channels overlying the occipital and parietal cortex, similar to the method used in study [1]. Then, a bandpass filter is applied to retain signals within the 1-50 Hz range. After filtering, one of the artifact removal methods is chosen, although it is important to note that the ICU-net is not yet implemented and that ICA refers to the extended Infomax ICA. The signal is then epoched from -0.2s to 0.8s relative to the stimulus onset, followed by baseline correction by subtracting the mean from -0.2s to 0s. Finally, the mean ERP is calculated for epochs sharing the same label, which helps to minimize noise.
+As illustrated in the image, the preprocessing starts by selecting 17 channels in the occipital and parietal cortex, similar to the method used in study [1]. Then, a bandpass filter is applied to retain signals within the 1-50 Hz range. After filtering, one of the artifact removal methods is chosen, although it is important to note that the ICU-net is not yet implemented and that ICA refers to the extended Infomax ICA. The signal is then epoched from -0.2s to 0.8s relative to the stimulus onset, followed by baseline correction by subtracting the mean from -0.2s to 0s. Finally, the mean ERP is calculated for epochs sharing the same label, which helps to minimize noise. The data is then split into training, validation, and test sets in a 70:15:15 ratio.
 
 ## Model
 We utilize EEGNet [2], a compact CNN specifically designed for efficient EEG classification. Its primary advantage lies in its versatility, handling various EEG-based tasks such as motor imagery, ERP classification, and abnormal EEG detection. The lightweight architecture of EEGNet makes it ideal for real-time applications and deployment on devices with limited computational resources. Furthermore, its robustness against noise making it an excellent candidate for our investigation into the necessity of data preprocessing for deep learning methods.
-
 
 # Validation
 To assess the effectiveness of the methods introduced in the lecture, we designed two experiments. In the first experiment, we evaluated steps 1, 2, and 4 using an ablation approach. The second experiment tested the best combination from the first experiment alongside one of four artifact removal methods. The results of these experiments are detailed in the `Results` section and the experiments are evaluated on an independent test set after model tuning to ensure reliability.
