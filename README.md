@@ -139,6 +139,9 @@ Given the imbalanced nature of the dataset, we use macro F1 as our main metric. 
 
 Regarding the performance of each label, labels `1`, `2`, `3`, and `12` (`human body`, `clothing and accessories`, `food`, and `plant`) generally perform better, except in the `1151` combination, which shows lower performance for the `plant` label. These categories are commonly seen objects, which likely contributes to their higher performance. Surprisingly, the `animal` label (`0`) consistently shows low performance across all artifact removal methods. This is unexpected, as one would assume that animals, being more distinct to human perception, would yield better performance.
 
+# Video demo
+https://drive.google.com/file/d/1CXrHnbwSs3LDOLASfUE4Sm5fZbmLAnou/view?usp=sharing
+
 # Reference
 [1] Gifford, A. T., Dwivedi, K., Roig, G., & Cichy, R. M. (2022). A large and rich EEG dataset for modeling human visual object recognition. NeuroImage, 264, 119754.
 
