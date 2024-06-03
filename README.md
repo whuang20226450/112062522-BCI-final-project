@@ -118,6 +118,23 @@ and unique aspects of your system
 
 ## Plot
 
+| Category                 | Label |
+|--------------------------|-------|
+| animal                   | 0     |
+| human body               | 1     |
+| clothing and accessories | 2     |
+| food                     | 3     |
+| home and furniture       | 4     |
+| kitchen                  | 5     |
+| electronics              | 6     |
+| medical equipment        | 7     |
+| office supply            | 8     |
+| musical instrument       | 9     |
+| vehicle                  | 10    |
+| toy                      | 11    |
+| plant                    | 12    |
+| other                    | 13    |
+
 ### Dataset ID 1111
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/f2009dd2-586c-4cd2-8087-cf0e1cc94a98" height="300">
 
@@ -131,9 +148,9 @@ and unique aspects of your system
 <img src="https://github.com/whuang20226450/112062522-BCI-final-project/assets/29110592/29062230-4afb-4d83-870c-a5f1f9136f1f" height="300">
 
 ## Observation
+Given the imbalanced nature of the dataset, we use macro F1 as our main metric. From Experiment 2, we observe that the combination labeled `1121` (ASR) performs the best. Adding ICA appears to degrade performance, possibly because the dataset was recorded while the subject was sitting, making ICA an overkill that might remove important components. Interestingly, Autoreject achieves the highest performance in terms of accuracy and micro F1, suggesting that combining it with other methods might yield even better results.
 
-
-
+Regarding the performance of each label, labels `1`, `2`, `3`, and `12` (`human body`, `clothing and accessories`, `food`, and `plant`) generally perform better, except in the `1151` combination, which shows lower performance for the `plant` label. These categories are commonly seen objects, which likely contributes to their higher performance. Surprisingly, the `animal` label (`0`) consistently shows low performance across all artifact removal methods. This is unexpected, as one would assume that animals, being more distinct to human perception, would yield better performance.
 
 # Reference
 [1] A large and rich EEG dataset for modeling human visual object recognition
