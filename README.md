@@ -50,6 +50,7 @@ To assess the effectiveness of the methods introduced in the lecture, we designe
 # Usage 
 
 **Environment**
+run `pip install -r requirements.txt`
 
 **Data preparation**
 1. Download the `Raw EEG data` of sub1 from [here](https://osf.io/3jk45/) and Unzip it.
@@ -87,11 +88,6 @@ To reproduce experiment2, excute `python exp2.py` and then `python test_exp2.py`
 In the `experiments` folder, each subfolder contains the training results for specific dataset. For a summary of the performance, you can refer to the `results.txt`.
 
 # Results
-your BCI system's performance against the competing methods. 
-Include metrics such as accuracy, precision, recall, F1-score, or any 
-other relevant evaluation metrics. Compare and contrast your BCI 
-system with existing competing methods. Highlight the advantages 
-and unique aspects of your system
 
 ## Experiment 1
 | Dataset ID | Test Accuracy | Test Macro F1 | Test Micro F1 |
@@ -147,5 +143,8 @@ Given the imbalanced nature of the dataset, we use macro F1 as our main metric. 
 Regarding the performance of each label, labels `1`, `2`, `3`, and `12` (`human body`, `clothing and accessories`, `food`, and `plant`) generally perform better, except in the `1151` combination, which shows lower performance for the `plant` label. These categories are commonly seen objects, which likely contributes to their higher performance. Surprisingly, the `animal` label (`0`) consistently shows low performance across all artifact removal methods. This is unexpected, as one would assume that animals, being more distinct to human perception, would yield better performance.
 
 # Reference
-[1] A large and rich EEG dataset for modeling human visual object recognition
-[2] EEGNet
+[1] Gifford, A. T., Dwivedi, K., Roig, G., & Cichy, R. M. (2022). A large and rich EEG dataset for modeling human visual object recognition. NeuroImage, 264, 119754.
+
+[2] Lawhern, V. J., Solon, A. J., Waytowich, N. R., Gordon, S. M., Hung, C. P., & Lance, B. J. (2018). EEGNet: a compact convolutional neural network for EEG-based brain–computer interfaces. Journal of neural engineering, 15(5), 056013.
+
+Code struture modified from https://github.com/eric12345566
