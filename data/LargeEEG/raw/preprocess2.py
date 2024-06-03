@@ -54,7 +54,7 @@ def get_label_mapping():
 
 if __name__ == "__main__":
     
-    dataset_id = '1130'
+    dataset_id = input()
     if dataset_id[2] == '3':
         input_name = f"{dataset_id[:2] + '0' + dataset_id[3]}.set"
     else:

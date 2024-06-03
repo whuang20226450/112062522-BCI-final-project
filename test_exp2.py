@@ -4,15 +4,14 @@ import subprocess
 
 if __name__ == "__main__":
   
-  config_name = 'MnistEEG'
   config_name = 'LargeEEG' 
 
-  for dataset_id in ['0000', '1100', '1001', '0101', '1101']:
+  for dataset_id in ['1111', '1121', '1151', '1131']:
     yaml = YAML()
     with open(f'config/{config_name}.yaml', 'r') as file:
       yaml_content = yaml.load(file)
-      yaml_content["name"] = f"exp1_{config_name}_datasetId_{dataset_id}_test"
-      yaml_content["weight_path"] = f"experiments/exp1_{config_name}_datasetId_{dataset_id}/weights/model_best_macrof1.pt"
+      yaml_content["name"] = f"exp2_{config_name}_datasetId_{dataset_id}_test"
+      yaml_content["weight_path"] = f"experiments/exp2_{config_name}_datasetId_{dataset_id}/weights/model_best_macrof1.pt"
       
       if dataset_id[-1] == '1':
         yaml_content["dataset"]["preprocess"] = True

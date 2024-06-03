@@ -274,6 +274,10 @@ class EEGNetModel:
     logging.info(f"Test Accuracy: {acc}")
     logging.info(f"Test Macro F1: {macro_f1}")
     logging.info(f"Test Micro F1: {micro_f1}")
+    
+    with open("experiments/result.txt", "a") as file:
+      file.write(f"{self.conf['name']}: Test Accuracy: {acc} / Test Macro F1: {macro_f1} / Test Micro F1: {micro_f1}\n")
+    
     self.plot_testing(y_true, y_pred)
     
     return 

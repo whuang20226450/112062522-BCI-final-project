@@ -1,8 +1,8 @@
-name: exp2_LargeEEG_datasetId_1131
+name: exp2_LargeEEG_datasetId_1131_test
 workspace_root_path: ./experiments
 device: cuda
 model: EEGNetModel
-weight_path: experiments/exp1_LargeEEG_datasetId_1101/weights/model_best_macrof1.pt
+weight_path: experiments/exp2_LargeEEG_datasetId_1131/weights/model_best_macrof1.pt
 net:
   type: EEGNet_Model
 loss:

@@ -4,23 +4,14 @@ import subprocess
 
 if __name__ == "__main__":
   
-  config_name = 'LargeEEG'
-    
-  label_distribution = np.array([
-    0.37792378, 0.01630435, 0.06836475, 0.1653653, 0.03938498, 0.01733627,
-    0.04060608, 0.01188429, 0.01343217, 0.018265, 0.05577532, 0.01534122,
-    0.01501445, 0.14500206])
-  weight = 1 / (label_distribution / min(label_distribution))
-  raweighttio = np.clip(weight, 0.05, 1)
-  weight = [float(w) for w in weight]
- 
+  config_name = 'LargeEEG' 
 
-  for dataset_id in ['1111', '1121', '1151', '1131']:
+  for dataset_id in ['0000', '1100', '1001', '0101', '1101']:
     yaml = YAML()
     with open(f'config/{config_name}.yaml', 'r') as file:
       yaml_content = yaml.load(file)
-      yaml_content["name"] = f"exp2_{config_name}_datasetId_{dataset_id}"
-      yaml_content["loss"]["weight"] = weight
+      yaml_content["name"] = f"exp1_{config_name}_datasetId_{dataset_id}_test"
+      yaml_content["weight_path"] = f"experiments/exp1_{config_name}_datasetId_{dataset_id}/weights/model_best_macrof1.pt"
       
       if dataset_id[-1] == '1':
         yaml_content["dataset"]["preprocess"] = True
@@ -37,7 +28,7 @@ if __name__ == "__main__":
       with open(f'config/{config_name}.yaml', 'w') as file:
         yaml.dump(yaml_content, file)
         
-    subprocess.run(f'python train.py start -c config/{config_name}.yaml', shell=True)     
+    subprocess.run(f'python train.py test -c config/{config_name}.yaml', shell=True)   
     
       
   with open("experiments/result.txt", "a") as file:

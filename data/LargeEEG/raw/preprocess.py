@@ -94,66 +94,16 @@ if __name__ == "__main__":
     }    
     raw = preprocessing(config)         
     raw.export(f'1000.set', fmt='eeglab', overwrite=True)
+    
+    config['drop_channel'] = False    
+    raw = preprocessing(config)         
+    mne.export.export_raw(f'0000.set', raw, fmt='eeglab', overwrite=True)
+  
+
+    ### test ###
     # # raw = mne.io.read_raw_eeglab('1000.set', preload=True)
     # # events, event_id = mne.events_from_annotations(raw)
     # # event_desc = {v: k for k, v in event_id.items()}
     # # print(events[:10])
     # # for event in events[:10]:
     # #     print(event_desc[event[2]], event[2])
-    
-    config['drop_channel'] = False    
-    raw = preprocessing(config)         
-    mne.export.export_raw(f'0000.set', raw, fmt='eeglab', overwrite=True)
-    
-    
-    
-
-
-
-
-    # thingsId2label = sio.loadmat('category_mat_manual.mat')['category_mat_manual']
-    # thingsId2label = np.argmax(thingsId2label, axis=1)
-    # categories = [
-    #     'animal', 'bird', 'body part', 'clothing', 'clothing accessory', 'container',
-    #     'dessert', 'drink', 'electronic device', 'food', 'fruit', 'furniture',
-    #     'home decor', 'insect', 'kitchen appliance', 'kitchen tool', 'medical equipment',
-    #     'musical instrument', 'office supply', 'part of car', 'plant', 'sports equipment',
-    #     'tool', 'toy', 'vegetable', 'vehicle', 'weapon'
-    # ]
-    # # Grouping similar categories
-    # grouped_categories = {
-    #     'animal': ['animal', 'bird', 'insect'],
-    #     'human body': ['body part'],
-    #     'clothing and accessories': ['clothing', 'clothing accessory'],
-    #     'food': ['dessert', 'drink', 'food', 'fruit', 'vegetable'],
-    #     'home and furniture': ['furniture', 'home decor'],
-    #     'kitchen': ['kitchen appliance', 'kitchen tool'],
-    #     'electronics': ['electronic device'],
-    #     'medical equipment': ['medical equipment'],
-    #     'office supply': ['office supply'],
-    #     'musical instrument': ['musical instrument'],
-    #     'vehicle': ['part of car', 'vehicle'],
-    #     'toy': ['toy'],
-    #     'plant': ['plant'],        
-    #     'other': ['tool', 'sports equipment', 'weapon', 'container'],
-    # }
-    # groupedCategories2label = {
-    #     'animal': 0,
-    #     'human body': 1,
-    #     'clothing and accessories': 2,
-    #     'food': 3,
-    #     'home and furniture': 4,
-    #     'kitchen': 5,
-    #     'electronics': 6,
-    #     'medical equipment': 7,
-    #     'office supply': 8,
-    #     'musical instrument': 9,
-    #     'vehicle': 10,
-    #     'toy': 11,
-    #     'plant': 12,
-    #     'other': 13,
-    # }
-    # reverse_grouped_categories = {v: k for k, values in grouped_categories.items() for v in values}
-    # thingsId2label = [groupedCategories2label[reverse_grouped_categories[categories[label]]] for label in thingsId2label]
-    
-
