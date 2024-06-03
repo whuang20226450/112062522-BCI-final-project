@@ -1,6 +1,3 @@
-# TODO
-demo video / 
-
 # Data description
 
 In this project, we utilize the dataset from a previous study [1], which employed a Rapid Serial Visual Presentation (RSVP) paradigm to present 16,740 images to subjects while recording their EEG signals using a 64-channel EASYCAP system at 1,000 Hz. The dataset comprises approximately 80,000 samples per subject from 10 subjects in total. The task involves classifying the subjects' EEG signals into one of 27 high-level classes based on the images they were viewing. For this project, we will focus on data from the first subject, and the classes will be consolidated into 14 to simplify the task. The source of the dataset is linked in the `Data preparation` section.
